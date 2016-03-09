@@ -52,13 +52,15 @@ copy_file 'config/initializers/form_errors.rb'
 # Agrego root path por defecto.
 route "root to: 'application#home'"
 
-if yes?("¿GitFlowear?")
-  after_bundle do
-    git :init
-    git flow: :init
-    run "rm .gitignore"
-    copy_file 'gitignore', '.gitignore'
-    git add: "."
-    git commit: %Q{ -m 'Initial commit' }
-  end
+#if yes?("¿Migrar?")
+#  password = ask? "Escriba su contraseña de mysql."
+#  ...
+#end
+
+after_bundle do
+  git flow: 'init -d'
+  run "rm .gitignore"
+  copy_file 'gitignore', '.gitignore'
+  git add: "."
+  git commit: %Q{ -m 'Initial commit' }
 end
