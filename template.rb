@@ -14,9 +14,15 @@ def source_paths
 end
 
 run "rm app/views/layouts/application.html.erb"
+run "rm app/assets/javascripts/application.js"
+run "rm app/assets/stylesheets/application.css"
 run "mkdir app/views/application"
 
 inside 'app' do
+  inside 'assets' do
+    copy_file 'stylesheets/application.css'
+    copy_file 'javascripts/application.js'
+  end
   inside 'views' do
     inside 'application' do
       template  'home.html.erb'
@@ -24,29 +30,35 @@ inside 'app' do
       template  '_head.html.erb'
       copy_file '_side.html.erb'
     end
-    inside 'layouts' do
-      template 'application.html.erb'
-    end
+    template 'layouts/application.html.erb'
   end
 end
 
 inside 'vendor' do
   directory 'assets' # Copio todo lo de AdminLTE en vendor.
-  #inside 'assets' do
-  #  run "ln plugins..." # Crear enlaces simbólicos.
-  #end
+  inside 'assets' do
+    inside 'javascripts' do 
+      run "ln -s ../plugins/ plugins" # Crear enlaces simbólicos.
+    end
+    inside 'stylesheets' do 
+      run "ln -s ../plugins/ plugins" # Crear enlaces simbólicos.
+    end
+  end
 end
+
+# Configuración de errores de formularios
+copy_file 'config/initializers/form_errors.rb'
 
 # Agrego root path por defecto.
 route "root to: 'application#home'"
 
-#rake "db:create"
-#rake "db:migrate"
-
-### 13 ###
-#after_bundle do
-#  git :init
-#  # git flow init
-#  git add: "."
-#  git commit: %Q{ -m 'Initial commit' }
-#end
+if yes?("¿GitFlowear?")
+  after_bundle do
+    git :init
+    git flow: :init
+    run "rm .gitignore"
+    copy_file 'gitignore', '.gitignore'
+    git add: "."
+    git commit: %Q{ -m 'Initial commit' }
+  end
+end
