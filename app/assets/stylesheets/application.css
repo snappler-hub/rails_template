@@ -14,5 +14,6 @@
  *= require font-awesome 
  *= require plugins/dist/css/AdminLTE
  *= require plugins/dist/css/skins/skin-green-light
+ *= require plugins/snackbars/snackbar.css 
  *= require_self
  */

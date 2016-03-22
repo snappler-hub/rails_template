@@ -13,10 +13,12 @@
     </aside>
 
     <div class="content-wrapper">
-      <%%= yield %>
-      <section id="snackbar-container">
-        <%%= flash_messages if flash %>
-      </section>
+      <div class="content">
+        <%%= yield %>
+        <section id="snackbar-container">
+          <%%= flash_messages if flash %>
+        </section>
+      </div>
     </div>
 
     <footer class="main-footer">

@@ -17,3 +17,6 @@
 //= require bootstrap
 //= require plugins/select2/select2.min
 //= require plugins/snackbars/snackbar
+//= require plugins/dist/js/app.js
+//= require init
+//= require select2_init

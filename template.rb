@@ -16,12 +16,33 @@ end
 run "rm app/views/layouts/application.html.erb"
 run "rm app/assets/javascripts/application.js"
 run "rm app/assets/stylesheets/application.css"
+run "rm app/controllers/application_controller.rb"
+run "rm app/helpers/application_helper.rb"
+run "rm app/config/environments/test.rb"
+run "rm app/config/locales/en.rb"
+run "rm app/config/environment.rb"
+run "rm app/config/application.rb"
 run "mkdir app/views/application"
 
 inside 'app' do
   inside 'assets' do
     copy_file 'stylesheets/application.css'
     copy_file 'javascripts/application.js'
+    copy_file 'javascripts/init.coffee'
+    copy_file 'javascripts/select2_init.coffee'
+  end
+  inside 'controllers' do
+    copy_file 'application_controller.rb'
+  end
+  inside 'helpers' do
+    copy_file 'application_helper.rb'
+  end
+  inside 'config' do
+    copy_file 'environment.rb'
+    copy_file 'application.rb'
+    copy_file 'environments/test.rb'
+    copy_file 'locales/en.rb'
+    copy_file 'locales/es.rb'
   end
   inside 'views' do
     inside 'application' do
