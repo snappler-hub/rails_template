@@ -30,7 +30,8 @@ run "mkdir app/views/application"
 inside 'app' do
   inside 'assets' do
     copy_file 'stylesheets/application.css'
-    copy_file 'stylesheets/custom-style.css.css'
+    copy_file 'stylesheets/custom-style.css'
+    copy_file 'stylesheets/responsive-table.css'
     copy_file 'javascripts/application.js'
     copy_file 'javascripts/init.coffee'
     copy_file 'javascripts/select2_init.coffee'

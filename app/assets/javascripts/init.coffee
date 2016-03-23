@@ -81,6 +81,12 @@ App.init = ->
       $('.control-sidebar').removeClass 'control-sidebar-open'
     return
 
+  $("[data-toggle='toggle-filter']").off('click')
+  $("[data-toggle='toggle-filter']").on 'click', ->
+    box = $(this).data('target')
+    $(box).toggleClass('visible')
+
+
   # Select2
   $("select").normalSelect()
 
@@ -95,7 +101,7 @@ App.init = ->
 
   # Reactivo eventos de AdminLTE porque se pierden con turbolinks
   $.AdminLTE.layout.activate()
-  $.AdminLTE.tree('.sidebar');
+  $.AdminLTE.tree('.sidebar')
 
   $('.sidebar li.active').closest('.treeview').addClass('active')
 

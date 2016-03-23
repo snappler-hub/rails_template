@@ -314,6 +314,7 @@ function _init() {
       var screenSizes = $.AdminLTE.options.screenSizes;
 
       //Enable sidebar toggle
+      $(document).off('click', toggleBtn);
       $(document).on('click', toggleBtn, function (e) {
         e.preventDefault();
 
