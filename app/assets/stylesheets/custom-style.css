@@ -1,0 +1,99 @@
+.input-group .has-error > .form-control:first-child{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+
+
+.input-group .has-error > span.help-block{
+  border-bottom: 1px solid #a94442;
+  border-bottom-right-radius: 0;
+  border-left: 1px solid #a94442;
+  border-right: 1px solid #a94442;
+  display: inline-table;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width: 100%;
+  background-color: #ffeeee;
+}
+
+
+.input-group .input-group-addon {
+    background-color: #ecf0f1;
+}
+
+
+.input-group.has-error .input-group-addon {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #a94442;
+}
+
+.has-error .select2-container .select2-choice .select2-arrow{
+  background-color: #f2dede;
+  border-left: 2px solid #a94442;
+}
+
+.page-header{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.page-header .button{
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+
+
+.btn-add:before,
+.btn-ok:before,
+.btn-delete:before{
+  font-family: FontAwesome;
+  padding-right: 0.5em;
+}
+
+.btn-add:before     { content: "\f067"; }
+.btn-ok:before      { content: "\f00c"; }
+.btn-delete:before  { content: "\f1f8"; }
+
+
+.tr-link{
+  cursor: pointer;
+}
+
+.tr-link .operations{
+  text-align: right;
+  cursor: initial;  
+}
+
+.pagination {
+    margin: 0;
+}
+
+.pagination .disabled > a{
+  background-color: #ecf0f1;
+}
+
+.text-grey {
+    color: #888;
+}
+
+.label{
+  font-size: 1em;
+}
+
+pre.sly{
+  background-color: transparent;
+  border: medium none;
+  padding: 0;
+}
+
+.vertical-middle > td{
+  vertical-align: middle !important;
+}

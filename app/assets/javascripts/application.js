@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.turbolinks
@@ -18,5 +19,7 @@
 //= require plugins/select2/select2.min
 //= require plugins/snackbars/snackbar
 //= require plugins/dist/js/app.js
+//= require moment
+//= require moment.es
 //= require init
 //= require select2_init

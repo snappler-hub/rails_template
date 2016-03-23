@@ -45,6 +45,23 @@ App.initModals = (parent) ->
 
     return
 
+
+App.addToList = (button, container) ->
+  time = (new Date).getTime()
+  regexp = new RegExp($(button).data('id'), 'g')
+  $(container).prepend $(button).data('fields').replace(regexp, time)
+  App.init()
+  return
+
+App.removeFromList = (button, item) ->
+  $(button).prev('input[type=hidden]').val '1'
+  $(button).closest(item).hide()
+  return
+
+
+
+
+
 App.init = ->
   # Turbolinks progress bar
   Turbolinks.enableProgressBar()
@@ -53,7 +70,7 @@ App.init = ->
   App.initSnackbar()
 
   # Ajax Modals
-  App.initModals()
+  #App.initModals()
 
   # Sidebar
   $('[data-controlsidebar]').on 'click', ->
@@ -67,25 +84,61 @@ App.init = ->
   # Select2
   $("select").normalSelect()
 
+  # Datepickers
+  $('.datepicker').datetimepicker({format: 'DD/MM/YYYY', locale: 'es'})
+  $('.datetimepicker').datetimepicker({format: 'DD/MM/YYYY HH:mm', locale: 'es'})
+
+  # Al hacer clicl en un por ejemplo calendar, tambien abra el datepicker*/
+  $('.input-group-addon.extend-input').on 'click', ->
+    $(this).closest('div').find('input').trigger 'focus'
+    return
+
   # Reactivo eventos de AdminLTE porque se pierden con turbolinks
   $.AdminLTE.layout.activate()
   $.AdminLTE.tree('.sidebar');
 
   $('.sidebar li.active').closest('.treeview').addClass('active')
 
+  # tablas con link
+  $('.tr-link td:not(.operations)').unbind 'click'
+  $('.tr-link td:not(.operations)').on 'click', ->
+    $(this).parent().find('.tr-link-a')[0].click()
+
+  return
 
 
-$(document).on "page:load", ->
+App.initActions = ->
+
+  # Actions de forms 
+  App.initXxxxActions('#yyyys')
+
+  return
+
+
+
+
+App.initXxxxActions = (container) ->
+  container = $(container)
+  container.on 'click', '.add-yyyy', (e) ->
+    e.preventDefault()
+    App.addToList this, '.yyyys_container'
+    return
+  container.on 'click', '.remove-yyyy', (e) ->
+    e.preventDefault()
+    App.removeFromList this, '.yyyy'
+    return
+  return
+
+
+
+$(document).ready ->
   App.init()
-
-$(document).on "page:change", ->
-  App.initSnackbar()
-  App.initModals()
-  $("select").normalSelect()
+  App.initActions()
 
 
 # Dispara msj de flash desde js
 # Ej: $(document).trigger('flash:send', {"danger":"Hola"});
 $(document).on 'flash:send', (e, flashMessages) ->
+  $('#snackbar-container > div').remove()
   App.flash_snackbar_render flashMessages
   return

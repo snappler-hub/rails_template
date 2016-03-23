@@ -4,7 +4,10 @@ gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'kaminari'
-
+gem 'jquery-turbolinks'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+gem 'bootstrap-glyphicons'
 gem_group :development, :test do
   gem 'pry'
 end
@@ -15,7 +18,7 @@ end
 
 run "rm app/views/layouts/application.html.erb"
 run "rm app/assets/javascripts/application.js"
-run "rm app/assets/stylesheets/application.css"
+run "rm app/assets/stylesheets/application.css.scss"
 run "rm app/controllers/application_controller.rb"
 run "rm app/helpers/application_helper.rb"
 run "rm app/config/environments/test.rb"
@@ -27,9 +30,11 @@ run "mkdir app/views/application"
 inside 'app' do
   inside 'assets' do
     copy_file 'stylesheets/application.css'
+    copy_file 'stylesheets/custom-style.css.css'
     copy_file 'javascripts/application.js'
     copy_file 'javascripts/init.coffee'
     copy_file 'javascripts/select2_init.coffee'
+    copy_file 'javascripts/moment.es.js'
   end
   inside 'controllers' do
     copy_file 'application_controller.rb'
@@ -41,6 +46,9 @@ inside 'app' do
     copy_file 'environment.rb'
     copy_file 'application.rb'
     copy_file 'environments/test.rb'
+    copy_file 'initializers/form_errors.rb'
+    copy_file 'initializers/date_format.rb'
+    copy_file 'initializers/will_paginate_array_fix.rb'
     copy_file 'locales/en.rb'
     copy_file 'locales/es.rb'
   end
