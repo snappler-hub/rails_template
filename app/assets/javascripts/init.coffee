@@ -25,25 +25,21 @@ App.initSnackbar = ->
     $('.snackbar-message').snackbar 'show'
 
 # Inicializa los modals con ajax
-App.initModals = (parent) ->
-  if parent
-    links = parent.find('[data-behavior~=ajax-modal]')
-  else
-    links = $('[data-behavior~=ajax-modal]')
-
+App.initModals = () ->
+  links = $('[data-behavior~=ajax-modal]')
   links.on 'click', (e)->
-    that = this
     e.preventDefault()
-    e.stopPropagation()
-    $.ajax
-      url: this.href
-    .done (data)->
-      modal = $(that.getAttribute('data-target'))
-      modal.addClass(that.getAttribute('data-targetClass'))
-      modal.find('.modal-content').html(data)
-      modal.modal("show");
+    e.stopPropagation()    
+    App.modalClick(this)
 
+App.modalClick = (button) ->
+  $('.select2-drop').each ->
+    $(this).select2 'close'
     return
+  $.getScript(button.getAttribute('href'))
+  return
+
+
 
 
 App.addToList = (button, container) ->
@@ -70,7 +66,7 @@ App.init = ->
   App.initSnackbar()
 
   # Ajax Modals
-  #App.initModals()
+  App.initModals()
 
   # Sidebar
   $('[data-controlsidebar]').on 'click', ->
@@ -86,9 +82,9 @@ App.init = ->
     box = $(this).data('target')
     $(box).toggleClass('visible')
 
-
   # Select2
   $("select").normalSelect()
+  $(".select_ajax").ajaxSelect()
 
   # Datepickers
   $('.datepicker').datetimepicker({format: 'DD/MM/YYYY', locale: 'es'})
@@ -116,22 +112,22 @@ App.init = ->
 App.initActions = ->
 
   # Actions de forms 
-  App.initXxxxActions('#yyyys')
+  App.initCarActions('#components')
 
   return
 
 
 
 
-App.initXxxxActions = (container) ->
+App.initCarActions = (container) ->
   container = $(container)
-  container.on 'click', '.add-yyyy', (e) ->
+  container.on 'click', '.add-component', (e) ->
     e.preventDefault()
-    App.addToList this, '.yyyys_container'
+    App.addToList this, '.components_container'
     return
-  container.on 'click', '.remove-yyyy', (e) ->
+  container.on 'click', '.remove-component', (e) ->
     e.preventDefault()
-    App.removeFromList this, '.yyyy'
+    App.removeFromList this, '.component'
     return
   return
 

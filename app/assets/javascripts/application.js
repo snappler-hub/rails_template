@@ -16,9 +16,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require plugins/select2/select2.min
+//= require plugins/select2/i18n/es
 //= require plugins/snackbars/snackbar
 //= require plugins/dist/js/app.js
 //= require moment
 //= require moment.es
+//= require bootstrap-datetimepicker
 //= require init
 //= require select2_init

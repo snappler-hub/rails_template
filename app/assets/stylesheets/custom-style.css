@@ -40,6 +40,13 @@
   border-left: 2px solid #a94442;
 }
 
+
+.select2-results .select2-no-results{
+  padding-left: 0;
+}
+
+
+
 .page-header{
   margin-top: 0px;
   margin-bottom: 10px;
@@ -103,6 +110,10 @@ pre.sly{
     margin-bottom: 15px;
   }
   .panel-actions > .btn{
+    display: block;
+    width: 100%;
+  }
+  .actions > .btn{
     display: block;
     width: 100%;
   }
