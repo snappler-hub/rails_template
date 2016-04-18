@@ -1,4 +1,6 @@
 ### GEMFILE ###
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'therubyracer', platforms: :ruby
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
@@ -8,9 +10,15 @@ gem 'jquery-turbolinks'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'bootstrap-glyphicons'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'remotipart'
 gem_group :development, :test do
   gem 'pry'
 end
+
+
+
 
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
@@ -26,6 +34,9 @@ run "rm app/config/locales/en.rb"
 run "rm app/config/environment.rb"
 run "rm app/config/application.rb"
 run "mkdir app/views/application"
+run "mkdir app/assets/javascripts/initializers"
+run "mkdir public/perm_assets"
+run "mkdir public/perm_assets/javascripts"
 
 inside 'app' do
   inside 'assets' do
@@ -34,9 +45,9 @@ inside 'app' do
     copy_file 'stylesheets/responsive-table.css'
     copy_file 'javascripts/application.js'
     copy_file 'javascripts/version.js.erb'
-    copy_file 'javascripts/init.coffee'
-    copy_file 'javascripts/select2_init.coffee'
-    copy_file 'javascripts/moment.es.js'
+    copy_file 'javascripts/initializers/01-commons.coffee'
+    copy_file 'javascripts/initializers/02-select2.coffee'
+    copy_file 'javascripts/initializers/03-actions.coffee'
   end
   inside 'controllers' do
     copy_file 'application_controller.rb'
@@ -74,6 +85,17 @@ inside 'vendor' do
     end
     inside 'stylesheets' do 
       run "ln -s ../plugins/ plugins" # Crear enlaces simbólicos.
+    end
+  end
+end
+
+inside 'public' do
+  inside 'perm_assets' do
+    inside 'javascripts' do
+      copy_file 'mode-html.js'
+      copy_file 'theme-monokai.js'
+      copy_file 'theme-textmate.js'
+      copy_file 'worker-html.js'
     end
   end
 end

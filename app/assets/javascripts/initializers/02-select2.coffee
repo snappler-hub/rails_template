@@ -46,7 +46,7 @@ jQuery.fn.ajaxSelect = (options) ->
      callback(data)
    placeholder: placeholder
    allowClear: allow_clear
-   minimumInputLength: 3
+   minimumInputLength: 2
    ajax:
      url: url
      dataType: "json"

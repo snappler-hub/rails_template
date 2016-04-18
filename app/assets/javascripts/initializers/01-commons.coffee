@@ -90,6 +90,54 @@ App.init = ->
   $('.datepicker').datetimepicker({format: 'DD/MM/YYYY', locale: 'es'})
   $('.datetimepicker').datetimepicker({format: 'DD/MM/YYYY HH:mm', locale: 'es'})
 
+
+  # Texto enriquecido
+  $('.wysiwyg').each ->
+    @mooEditable actions: 'bold italic underline strikethrough | forecolor | formatBlock justifyleft justifyright justifycenter justifyfull | insertunorderedlist insertorderedlist | tableadd tableedit tablerowadd tablerowedit tablerowspan tablerowsplit tablerowdelete tablecoladd tablecoledit tablecolspan tablecolsplit tablecoldelete | undo redo removeformat | createlink unlink | urlimage image | toggleview'
+    return
+
+
+  # Editor codigo
+  ace.config.set 'workerPath', '/perm_assets/javascripts'
+  ace.config.set 'themePath', '/perm_assets/javascripts'
+  ace.config.set 'modePath', '/perm_assets/javascripts'
+
+  $('textarea[data-editor="ace"]').each ->
+    textarea = $(this)
+    textarea.hide()
+    textarea.removeAttr('data-editor')
+    ace_editor = $('<div id="ace_editor"></div><div class="scrollmargin"></div>').insertBefore(textarea)
+    editor = ace.edit(ace_editor[0])
+    editor.setTheme 'ace/theme/monokai'
+    editor.setOptions
+      tabSize: 2
+      maxLines: Infinity
+      minLines: 1
+      autoScrollEditorIntoView: true
+    editor.renderer.setScrollMargin 10, 10, 10, 10
+    editor.getSession().setMode 'ace/mode/html'
+    editor.getSession().setValue textarea.val()
+    editor.getSession().on 'change', ->
+      textarea.val editor.getSession().getValue()
+      return
+    return
+
+
+  # Fileinput
+  $('.fileinput-image-ajax').fileinput
+    overwriteInitial: false
+    showCaption: false
+    allowedFileTypes: [ 'image' ]
+    allowedPreviewTypes: [ 'image' ]
+    language: 'es'
+  $('.fileinput-image-ajax').on 'filepredelete', (jqXHR) ->
+    abort = true
+    if confirm('Estas seguro de eliminar la imagen?')
+      abort = false
+    abort
+  $('.kv-fileinput-error').on 'click', ->
+    $(this).fadeOut()
+
   # Al hacer clicl en un por ejemplo calendar, tambien abra el datepicker*/
   $('.input-group-addon.extend-input').on 'click', ->
     $(this).closest('div').find('input').trigger 'focus'
@@ -112,25 +160,9 @@ App.init = ->
 App.initActions = ->
 
   # Actions de forms 
-  App.initCarActions('#components')
+  Actions.initCarActions()
 
   return
-
-
-
-
-App.initCarActions = (container) ->
-  container = $(container)
-  container.on 'click', '.add-component', (e) ->
-    e.preventDefault()
-    App.addToList this, '.components_container'
-    return
-  container.on 'click', '.remove-component', (e) ->
-    e.preventDefault()
-    App.removeFromList this, '.component'
-    return
-  return
-
 
 
 $(document).ready ->

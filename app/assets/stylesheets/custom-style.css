@@ -95,10 +95,10 @@
   font-size: 1em;
 }
 
-pre.sly{
-  background-color: transparent;
-  border: medium none;
-  padding: 0;
+pre.sly {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 
 .vertical-middle > td{
