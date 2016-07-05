@@ -1,6 +1,4 @@
 ### GEMFILE ###
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
 gem 'therubyracer', platforms: :ruby
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
@@ -12,12 +10,9 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'bootstrap-glyphicons'
 gem 'rmagick'
 gem 'carrierwave'
-gem 'remotipart'
 gem_group :development, :test do
   gem 'pry'
 end
-
-
 
 
 def source_paths
@@ -26,7 +21,7 @@ end
 
 run "rm app/views/layouts/application.html.erb"
 run "rm app/assets/javascripts/application.js"
-run "rm app/assets/stylesheets/application.css.scss"
+run "rm app/assets/stylesheets/application.css"
 run "rm app/controllers/application_controller.rb"
 run "rm app/helpers/application_helper.rb"
 run "rm app/config/environments/test.rb"
@@ -40,7 +35,7 @@ run "mkdir public/perm_assets/javascripts"
 
 inside 'app' do
   inside 'assets' do
-    copy_file 'stylesheets/application.css'
+    copy_file 'stylesheets/application.css.scss'
     copy_file 'stylesheets/custom-style.css'
     copy_file 'stylesheets/responsive-table.css'
     copy_file 'javascripts/application.js'
@@ -62,9 +57,8 @@ inside 'app' do
     copy_file 'initializers/form_errors.rb'
     copy_file 'initializers/version.rb'
     copy_file 'initializers/date_format.rb'
-    copy_file 'initializers/will_paginate_array_fix.rb'
-    copy_file 'locales/en.rb'
-    copy_file 'locales/es.rb'
+    copy_file 'locales/en.yml'
+    copy_file 'locales/es.yml'
   end
   inside 'views' do
     inside 'application' do
@@ -100,15 +94,11 @@ inside 'public' do
   end
 end
 
-# Configuración de errores de formularios
-copy_file 'config/initializers/form_errors.rb'
-
 # Agrego root path por defecto.
 route "root to: 'application#home'"
 
 #if yes?("¿Migrar?")
 #  password = ask? "Escriba su contraseña de mysql."
-#  ...
 #end
 
 after_bundle do
