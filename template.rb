@@ -12,6 +12,7 @@ gem 'rmagick'
 gem 'carrierwave'
 gem_group :development, :test do
   gem 'pry'
+  gem 'rails-erd'
 end
 
 
@@ -33,42 +34,52 @@ run "mkdir app/assets/javascripts/initializers"
 run "mkdir public/perm_assets"
 run "mkdir public/perm_assets/javascripts"
 
+
 inside 'app' do
   inside 'assets' do
-    copy_file 'stylesheets/application.css.scss'
-    copy_file 'stylesheets/custom-style.css'
-    copy_file 'stylesheets/responsive-table.css'
-    copy_file 'javascripts/application.js'
-    copy_file 'javascripts/version.js.erb'
-    copy_file 'javascripts/initializers/01-commons.coffee'
-    copy_file 'javascripts/initializers/02-select2.coffee'
-    copy_file 'javascripts/initializers/03-actions.coffee'
-  end
-  inside 'controllers' do
-    copy_file 'application_controller.rb'
-  end
-  inside 'helpers' do
-    copy_file 'application_helper.rb'
-  end
-  inside 'config' do
-    copy_file 'environment.rb'
-    copy_file 'application.rb'
-    copy_file 'environments/test.rb'
-    copy_file 'initializers/form_errors.rb'
-    copy_file 'initializers/version.rb'
-    copy_file 'initializers/date_format.rb'
-    copy_file 'locales/en.yml'
-    copy_file 'locales/es.yml'
-  end
-  inside 'views' do
-    inside 'application' do
-      template  'home.html.erb'
-      template  '_navbar.html.erb'
-      template  '_head.html.erb'
-      copy_file '_side.html.erb'
+    inside 'stylesheets' do
+      copy_file 'application.css'
+      copy_file 'custom-style.css'
+      copy_file 'responsive-table.css'
     end
-    template 'layouts/application.html.erb'
+    inside 'javascripts' do
+      copy_file 'application.js'
+      copy_file 'moment.es.js'
+      inside 'initializers' do
+        copy_file '01-commons.coffee'
+        copy_file '02-select2.coffee'
+        copy_file '03-actions.coffee'
+      end
+    end
   end
+end
+
+inside 'controllers' do
+  copy_file 'application_controller.rb'
+end
+inside 'helpers' do
+  copy_file 'application_helper.rb'
+  copy_file 'form_helper.rb'    
+end
+inside 'config' do
+  copy_file 'environment.rb'
+  copy_file 'application.rb'
+  copy_file 'environments/test.rb'
+  copy_file 'initializers/form_errors.rb'
+  copy_file 'initializers/version.rb'
+  copy_file 'initializers/date_format.rb'
+  copy_file 'locales/en.yml'
+  copy_file 'locales/es.yml'
+end
+inside 'views' do
+  inside 'application' do
+    template  'home.html.erb'
+    template  '_navbar.html.erb'
+    template  '_head.html.erb'
+    copy_file '_side.html.erb'
+  end
+  template 'layouts/application.html.erb'
+end
 end
 
 inside 'vendor' do

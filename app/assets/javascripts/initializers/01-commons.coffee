@@ -54,13 +54,22 @@ App.removeFromList = (button, item) ->
   $(button).closest(item).hide()
   return
 
+App.moveUp = (button, item) ->
+  section = $(button.closest(item))
+  section.insertBefore(section.prev(item))
+  return
+
+App.moveDown = (button, item) ->
+  section = $(button.closest(item))
+  section.insertAfter(section.next(item))
+  return
 
 
 
 
 App.init = ->
   # Turbolinks progress bar
-  Turbolinks.enableProgressBar()
+  #Turbolinks.enableProgressBar() ToDo no anda
 
   # Snackbar
   App.initSnackbar()
@@ -138,6 +147,9 @@ App.init = ->
   $('.kv-fileinput-error').on 'click', ->
     $(this).fadeOut()
 
+
+
+
   # Al hacer clicl en un por ejemplo calendar, tambien abra el datepicker*/
   $('.input-group-addon.extend-input').on 'click', ->
     $(this).closest('div').find('input').trigger 'focus'
@@ -160,14 +172,19 @@ App.init = ->
 App.initActions = ->
 
   # Actions de forms 
-  Actions.initCarActions()
+  Actions.initExampleActions()
 
   return
 
 
-$(document).ready ->
+#----------------------------- (RAILS  >= 5)
+$(document).on "turbolinks:load", ->
+
+#----------------------------- (RAILS  < 5)
+#$(document).ready ->
   App.init()
   App.initActions()
+
 
 
 # Dispara msj de flash desde js

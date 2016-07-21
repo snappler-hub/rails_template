@@ -29,3 +29,4 @@
 //= require plugins/moment/moment.es.js
 //= require bootstrap-datetimepicker
 //= require_tree ./initializers
+

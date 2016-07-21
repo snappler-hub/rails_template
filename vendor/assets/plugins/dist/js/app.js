@@ -314,6 +314,7 @@ function _init() {
       var screenSizes = $.AdminLTE.options.screenSizes;
 
       //Enable sidebar toggle
+      //antes desbindeo porque sino abre y cierra
       $(document).off('click', toggleBtn);
       $(document).on('click', toggleBtn, function (e) {
         e.preventDefault();
@@ -390,6 +391,7 @@ function _init() {
     var _this = this;
     var animationSpeed = $.AdminLTE.options.animationSpeed;
 
+    //antes desbindeo porque sino abre y cierra
     $(document).off('click', menu + ' li a');
     $(document).on('click', menu + ' li a', function (e) {
       //Get the clicked link and the next element
