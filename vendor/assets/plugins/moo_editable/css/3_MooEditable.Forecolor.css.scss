@@ -1,6 +1,6 @@
 .mooeditable-ui-toolbar .forecolor-item .button-icon{
-	background: transparent url('mooeditable-toolbarbuttons-silk.png') no-repeat top left;
-	background-position: 0 -192px;
+  background: transparent url(asset-path('mooeditable/mooeditable-toolbarbuttons-silk.png')) no-repeat top left;
+  background-position: 0 -192px;
 }
 
 .forecolor-overlay .overlay-content{
@@ -9,19 +9,19 @@
 
 .forecolor-overlay .forecolor-colorpicker-color{
     line-height: 0;
-	overflow: hidden;
-	height: 12px;
-	width: 12px;
-	float: left;
+  overflow: hidden;
+  height: 12px;
+  width: 12px;
+  float: left;
     margin: 0 4px 4px 0;
-	border: 1px solid #fff;
-	border-radius: 2px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
 }
 
 .forecolor-overlay .forecolor-colorpicker-color:hover{
-	border-color: #000;
+  border-color: #000;
 }
 
 .forecolor-overlay .forecolor-colorpicker-br{

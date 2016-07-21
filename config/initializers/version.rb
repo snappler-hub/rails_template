@@ -1,7 +1,5 @@
-module Application
-  MAJOR = 0
-  MINOR = 1
-  TINY  = 0
-
-  VERSION = [MAJOR, MINOR, TINY].compact.join(".")
+module App
+  class Application
+    VERSION = '0.1'
+  end
 end

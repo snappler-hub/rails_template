@@ -93,7 +93,9 @@ App.init = ->
 
   # Select2
   $("select").normalSelect()
-  $(".select_ajax").ajaxSelect()
+  $("select").normalSelect()
+  $("input.select_ajax, select.select_ajax").each ->
+    $(this).ajaxSelect()
 
   # Datepickers
   $('.datepicker').datetimepicker({format: 'DD/MM/YYYY', locale: 'es'})
