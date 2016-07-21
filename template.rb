@@ -26,22 +26,32 @@ run "rm app/config/locales/en.rb"
 run "rm app/config/environment.rb"
 run "rm app/config/application.rb"
 run "mkdir app/views/application"
+run "mkdir app/assets/javascripts/initializers"
+
 
 inside 'app' do
   inside 'assets' do
-    copy_file 'stylesheets/application.css'
-    copy_file 'stylesheets/custom-style.css'
-    copy_file 'stylesheets/responsive-table.css'
-    copy_file 'javascripts/application.js'
-    copy_file 'javascripts/init.coffee'
-    copy_file 'javascripts/select2_init.coffee'
-    copy_file 'javascripts/moment.es.js'
+    inside 'stylesheets' do
+      copy_file 'application.css'
+      copy_file 'custom-style.css'
+      copy_file 'responsive-table.css'
+    end
+    inside 'javascripts' do
+      copy_file 'application.js'
+      copy_file 'moment.es.js'
+      inside 'initializers' do
+        copy_file '01-commons.coffee'
+        copy_file '02-select2.coffee'
+      end
+    end
   end
+
   inside 'controllers' do
     copy_file 'application_controller.rb'
   end
   inside 'helpers' do
     copy_file 'application_helper.rb'
+    copy_file 'form_helper.rb'    
   end
   inside 'config' do
     copy_file 'environment.rb'

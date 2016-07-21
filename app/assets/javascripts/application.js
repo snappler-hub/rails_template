@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require version
 //= require bootstrap
 //= require plugins/select2/select2.min
 //= require plugins/select2/i18n/es
@@ -22,5 +23,4 @@
 //= require moment
 //= require moment.es
 //= require bootstrap-datetimepicker
-//= require init
-//= require select2_init
+//= require_tree ./initializers

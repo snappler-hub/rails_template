@@ -2,8 +2,8 @@ module ApplicationHelper
 
  def flash_message(klass, message)
    snack_klass = "#{klass} callout "
-   snack_klass += 'callout-success' if klass == 'success'
-   snack_klass += 'callout-danger'  if klass == 'error' || klass == 'danger'
+   snack_klass += 'callout-success' if klass == 'success' || klass == 'notice'
+   snack_klass += 'callout-danger' if klass == 'error' || klass == 'danger' || klass == 'alert'
    snack_klass += 'callout-warning'  if klass == 'warning'
    flash.discard(klass)
    content_tag :span, '', class: "snackbar-message klass",
