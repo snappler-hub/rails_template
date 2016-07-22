@@ -1,0 +1,9 @@
+es:
+  activemodel:
+    attributes:
+
+
+  activerecord:
+    attributes:
+      entity:
+        field: 'name_field'

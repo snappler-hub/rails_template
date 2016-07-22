@@ -103,12 +103,18 @@ inside 'app' do
 
   inside 'views' do
     inside 'application' do
-      template  'home.html.erb'
-      template  '_navbar.html.erb'
-      template  '_head.html.erb'
+      copy_file  'home.html.erb'
+      copy_file  '_navbar.html.erb'
+      copy_file  '_head.html.erb'
       copy_file '_side.html.erb'
     end
-    template 'layouts/application.html.erb'
+    copy_file 'layouts/application.html.erb'
+  end
+
+  inside 'models' do
+    inside 'concerns' do
+      copy_file  'destroyable.rb'
+    end
   end
 
 end
@@ -123,6 +129,10 @@ inside 'config' do
   copy_file 'initializers/will_paginate_array_fix.rb'
   copy_file 'locales/en.yml'
   copy_file 'locales/es.yml'
+  copy_file 'locales/devise.en.yml'
+  copy_file 'locales/devise.es.yml'
+  copy_file 'locales/form.es.yml'
+  copy_file 'locales/errors.es.yml'
 end
 
 
