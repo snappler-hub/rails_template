@@ -1,12 +1,12 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <%%= link_to root_path, class: 'logo' do %>
+  <%= link_to root_path, class: 'logo' do %>
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b><%= @app_name.humanize.split('').first %></b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b><%= @app_name.humanize %></b></span>
-  <%% end %>
+  <% end %>
 
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -18,7 +18,7 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li><%%= link_to 'Home', root_path %>
+        <li><%= link_to 'Home', root_path %>
       </ul>
     </div>
   </nav>

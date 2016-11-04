@@ -148,6 +148,21 @@ App.init = ->
     abort
   $('.kv-fileinput-error').on 'click', ->
     $(this).fadeOut()
+    
+  $(".fileinput-image").fileinput
+    showUpload: false
+    showRemove: false
+    showCaption: false
+    language: 'es'
+    allowedFileTypes: ['image']
+    allowedPreviewTypes: ['image']
+
+  $(".fileinput-all").fileinput
+    showUpload: false
+    showRemove: false
+    showCaption: true
+    language: 'es'
+
 
 
 

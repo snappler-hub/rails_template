@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><%%= render 'head' %></head>
+<head><%= render 'head' %></head>
 <body class="skin-green-light">
   <div class="wrapper">
 
-    <%%= render 'navbar' %>
+    <%= render 'navbar' %>
 
     <aside class="main-sidebar">
       <section class="sidebar">
-        <%%= render 'side' %>
+        <%= render 'side' %>
       </section>
     </aside>
 
     <div class="content-wrapper">
       <div class="content">
-        <%%= yield %>
+        <%= yield %>
         <section id="snackbar-container">
-          <%%= flash_messages if flash %>
+          <%= flash_messages if flash %>
         </section>
       </div>
     </div>
 
     <footer class="main-footer">
-      <div class="pull-right hidden-xs">
+      <div class="text-right hidden-xs">
         <b>Version</b>
-        0.1
+        <%= App::Application::VERSION %>
       </div>
     </footer>
 
