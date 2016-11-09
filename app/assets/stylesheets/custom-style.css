@@ -33,15 +33,36 @@
   border-color: #a94442;
 }
 
-.has-error .select2-container .select2-choice .select2-arrow{
-  background-color: #f2dede;
-  border-left: 2px solid #a94442;
+
+.select2-container .select2-choice{
+    border-width: 1px;
+}
+
+.has-error .select2-container .select2-choice .select2-arrow {
+    background-color: #f2dede;
+    border-left: 1px solid #a94442;
+}
+
+.select2-results .select2-no-results {
+    padding-left: 0;
+}
+
+.select2-drop-active{
+  border-width: medium 1px 1px;
+}
+
+.select2-container-multi .select2-choices{
+  border-width: 1px;
+}
+
+.select2-container-active .select2-choice, .select2-container-multi.select2-container-active .select2-choices{
+  border-width: 1px;
 }
 
 
-.select2-results .select2-no-results{
-  padding-left: 0;
-}
+
+
+
 
 
 
